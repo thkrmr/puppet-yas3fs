@@ -24,7 +24,8 @@ class yas3fs::package {
   package { 'yas3fs':
     ensure        => present,
     provider      => 'pip',
-    allow_virtual => true
+    allow_virtual => true,
+    source        => 'git+git://github.com/padde/yas3fs.git@s3-sigv4',
   }
 
 }
