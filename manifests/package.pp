@@ -33,8 +33,7 @@ class yas3fs::package {
     provider      => 'pip',
     allow_virtual => true,
     source        => 'git+git://github.com/padde/yas3fs.git@s3-sigv4',
-    after         => $pip_req,
-    require       => $fuse_req,
+    require       => [$fuse_req, $pip_req],
   }
 
 }
