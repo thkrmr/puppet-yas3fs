@@ -7,6 +7,10 @@ class yas3fs::package {
       ensure        => present,
       allow_virtual => true
     }
+    
+    $pip_req = Package['python-pip']
+  } else {
+    $pip_req = undef
   }
 
   package { 'fuse':
@@ -19,6 +23,9 @@ class yas3fs::package {
       ensure        => present,
       allow_virtual => true
     }
+    $fuse_req = [Package['fuse'], Package['fuse-libs']]
+  } else {
+    $fuse_req = Package['fuse']
   }
 
   package { 'yas3fs':
@@ -26,6 +33,8 @@ class yas3fs::package {
     provider      => 'pip',
     allow_virtual => true,
     source        => 'git+git://github.com/padde/yas3fs.git@s3-sigv4',
+    after         => $pip_req,
+    require       => $fuse_req,
   }
 
 }
