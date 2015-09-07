@@ -32,7 +32,7 @@ class yas3fs::package {
     ensure        => present,
     provider      => 'pip',
     allow_virtual => true,
-    source        => 'git+git://github.com/padde/yas3fs.git@s3-sigv4',
+    source        => 'git+git://github.com/danilop/yas3fs@master',
     require       => [$fuse_req, $pip_req],
   }
 
