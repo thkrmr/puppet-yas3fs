@@ -5,10 +5,11 @@ class yas3fs::package {
   if $::yas3fs::install_pip_package {
     package { $::yas3fs::pip_package_name:
       ensure        => present,
+      alias         => 'yas3fs-python-pip',
       allow_virtual => true
     }
     
-    $pip_req = Package[$::yas3fs::pip_package_name]
+    $pip_req = Package['yas3fs-python-pip']
   } else {
     $pip_req = undef
   }
