@@ -1,6 +1,7 @@
 # yas3fs defaults
 class yas3fs::params {
   $install_pip_package = true
+  $pip_package_name = 'python-pip'
 
 
   # Use the jethrocarr-initfact module to determine which init system is in
